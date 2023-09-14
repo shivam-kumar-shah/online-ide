@@ -2,30 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.header {
-  grid-area: header;
+.underline__transition {
+  overflow: hidden;
+  @apply cursor-pointer;
 }
 
-.nav {
-  grid-area: nav;
+.underline__transition::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.1rem;
+  position: relative;
+  left: -100%;
+  @apply bg-font-primary transition-all ease-in-out;
 }
 
-.main {
-  grid-area: main;
-}
-
-.app {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "nav main";
-  grid-template-rows: 5rem 1fr;
-}
-
-.open {
-  grid-template-columns: 16rem 1fr;
-}
-
-.close {
-  grid-template-columns: 5rem 1fr;
+.underline__transition:hover::after {
+  left: 0;
 }
