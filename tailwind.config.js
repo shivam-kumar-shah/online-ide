@@ -5,9 +5,13 @@ module.exports = {
     extend: {
       colors: {
         primary: "rgb(30, 203, 225)",
+        accent: "rgb(102, 100, 236)",
+        "accent-light": "rgb(94, 115, 240)",
         surface: "rgb(27, 31, 36)",
         "font-primary": "rgb(255, 255, 255)",
         "font-secondary": "rgb(69, 74, 79)",
+        "font-tertiary": "rgb(255, 255, 255,0.5)",
+        "editor-surface": "rgb(30, 30, 30)",
       },
       fontFamily: {
         body: [
