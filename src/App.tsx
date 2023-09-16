@@ -5,7 +5,7 @@ import Landing from "./pages/Landing";
 
 function App() {
   return (
-    <div className="app h-screen w-screen font-body bg-surface text-font-primary">
+    <div className="app h-screen w-screen grid items-center font-body bg-surface text-font-primary">
       {/* <Home /> */}
       <Landing />
     </div>

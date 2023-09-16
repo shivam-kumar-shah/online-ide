@@ -1,11 +1,24 @@
-import React, { PropsWithChildren } from "react";
+import React, {
+  HTMLAttributes,
+  MouseEventHandler,
+  PropsWithChildren,
+} from "react";
 
-type Props = {
+interface Props {
   className?: string;
-};
+  onClick?: MouseEventHandler<HTMLDivElement>;
+}
 
-const SubTitle = ({ children, className }: PropsWithChildren<Props>) => {
-  return <div className={`text-font-secondary ${className}`}>{children}</div>;
+const SubTitle = ({
+  className,
+  children,
+  onClick,
+}: PropsWithChildren<Props>) => {
+  return (
+    <div className={`text-font-secondary ${className}`} onClick={onClick}>
+      {children}
+    </div>
+  );
 };
 
 export default SubTitle;
