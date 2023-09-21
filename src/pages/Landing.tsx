@@ -18,7 +18,7 @@ type Props = {};
 
 const Landing = (props: Props) => {
   return (
-    <main className="flex flex-row w-full max-w-7xl aspect-[3/2] max-h-full p-20 mx-auto">
+    <main className="flex flex-row w-full max-w-7xl aspect-[3/2] max-h-full py-20 px-10 mx-auto overflow-hidden">
       <CallToAction />
       <Form />
     </main>

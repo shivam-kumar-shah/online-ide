@@ -16,6 +16,13 @@ const CodeEditor = (props: Props) => {
         className="w-full h-full rounded-md"
         theme="vs-dark"
         onChange={(value) => setState(value ?? "")}
+        options={{
+          fontFamily: "Fira Code",
+          fontLigatures: true,
+          autoClosingBrackets: "always",
+          formatOnType: true,
+          formatOnPaste: true,
+        }}
       />
     </div>
   );
