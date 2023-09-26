@@ -5,9 +5,9 @@ type Props = {};
 
 export const Profile = ({}: Props) => {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex h-full w-full flex-col">
       <Header />
-      <main className="h-full w-full max-w-5xl bg-red-500 mx-auto flex flex-row">
+      <main className="mx-auto flex h-full w-full max-w-5xl flex-row bg-red-500">
         <div className="w-full">Profile</div>
       </main>
     </div>

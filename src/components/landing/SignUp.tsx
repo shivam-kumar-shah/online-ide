@@ -12,7 +12,7 @@ type Props = { className?: string };
 const SignUp = ({ className }: Props) => {
   return (
     <div className={`flex flex-col gap-y-4 ${className}`}>
-      <span className="text-2xl -mt-2 mb-2">Let's sign you up first!</span>
+      <span className="-mt-2 mb-2 text-2xl">Let's sign you up first!</span>
       <Input
         onClick={() => {}}
         title="email"

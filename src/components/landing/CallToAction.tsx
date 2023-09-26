@@ -6,12 +6,12 @@ type Props = {};
 
 const CallToAction = (props: Props) => {
   return (
-    <section className="flex flex-col bg-gradient-to-br from-indigo-500 to-purple-500 h-full w-3/5 rounded-lg font-heading p-20 justify-between">
+    <section className="flex h-full w-3/5 flex-col justify-between rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 p-20 font-heading">
       <div className="logo flex flex-row items-center gap-x-1">
         <FaCode />
         <span className="underline__transition">online IDE</span>
       </div>
-      <div className="flex flex-col text-4xl tracking-wide gap-y-2">
+      <div className="flex flex-col gap-y-2 text-4xl tracking-wide">
         <Title>Practice Problems.</Title>
         <Title>Try out ideas.</Title>
         <Title>For Free.</Title>

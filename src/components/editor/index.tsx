@@ -8,12 +8,12 @@ const CodeEditor = (props: Props) => {
   return (
     <div
       id="code__editor"
-      className="border border-font-secondary bg-editor-surface rounded-md py-6 w-1/2 h-full resize-x"
+      className="h-full w-1/2 resize-x rounded-md border border-font-secondary bg-editor-surface py-6"
     >
       <Editor
         defaultLanguage="typescript"
         value={state}
-        className="w-full h-full rounded-md"
+        className="h-full w-full rounded-md"
         theme="vs-dark"
         onChange={(value) => setState(value ?? "")}
         options={{

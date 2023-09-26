@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="app h-screen w-screen grid items-center font-body bg-surface text-font-primary">
+    <div className="app grid h-screen w-screen items-center bg-surface font-body text-font-primary">
       <RouterProvider router={router} />
     </div>
   );

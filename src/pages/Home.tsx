@@ -7,9 +7,9 @@ type Props = {};
 
 const Home = (props: Props) => {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex h-full w-full flex-col">
       <Header />
-      <main className="flex flex-row p-3 w-full h-full gap-x-2 overflow-auto">
+      <main className="flex h-full w-full flex-row gap-x-2 overflow-auto p-3">
         <Prompt />
         <Editor />
       </main>

@@ -10,8 +10,8 @@ const Form = (props: Props) => {
   const [isSignIn, setIsSignIn] = useState(false);
 
   return (
-    <section className="h-full w-2/5 flex flex-col gap-y-4 pl-8 justify-center">
-      <div className="text-lg flex flex-col">
+    <section className="flex h-full w-2/5 flex-col justify-center gap-y-4 pl-8">
+      <div className="flex flex-col text-lg">
         <div className="greeting flex flex-row items-center gap-x-2 text-primary">
           <FaHandPeace className="" />
           Hi
@@ -19,7 +19,7 @@ const Form = (props: Props) => {
       </div>
       {!isSignIn && <SignUp />}
       {isSignIn && <SignIn />}
-      <SubTitle className="flex flex-row gap-x-1 mx-auto mt-2 hover:text-font-primary transition-all ease-in-out">
+      <SubTitle className="mx-auto mt-2 flex flex-row gap-x-1 transition-all ease-in-out hover:text-font-primary">
         {isSignIn ? "Not a member?" : "Already a member?"}
         <SubTitle
           className="underline__transition text-primary"

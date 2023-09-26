@@ -7,7 +7,7 @@ type Props = {
 const Button = ({ children, className }: PropsWithChildren<Props>) => {
   return (
     <button
-      className={`rounded-md bg-accent text-font-primary p-2 hover:scale-y-110 active:scale-100 transition-all ease-in-out ${className}`}
+      className={`rounded-md bg-accent p-2 text-font-primary transition-all ease-in-out hover:scale-y-110 active:scale-100 ${className}`}
     >
       {children}
     </button>
