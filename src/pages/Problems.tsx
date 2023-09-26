@@ -3,13 +3,13 @@ import Header from "../components/layout/header";
 
 type Props = {};
 
-export const Profile = ({}: Props) => {
+const Problems = (props: Props) => {
   return (
     <div className="flex h-full w-full flex-col">
       <Header />
-      <main className="mx-auto flex h-full w-full max-w-5xl flex-row bg-red-500">
-        <div className="w-full">Profile</div>
-      </main>
+      <main className="flex h-full w-full flex-row gap-x-2 overflow-auto p-3"></main>
     </div>
   );
 };
+
+export default Problems;
