@@ -24,7 +24,7 @@ const Input = ({ type = "text", title, onClick, placeholder, icon }: Props) => {
         title={title}
         onClick={onClick}
         placeholder={placeholder}
-        className="bg-transparent font-heading outline-none"
+        className="bg-transparent font-heading outline-none w-full h-full"
       />
     </div>
   );

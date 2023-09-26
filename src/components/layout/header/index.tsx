@@ -12,10 +12,16 @@ const Header = (props: Props) => {
         <div className="logo__title font-bold text-2xl">online IDE</div>
       </div>
       <ul className="flex flex-row gap-x-4 items-center text-lg">
-        <li className="underline__transition">Problems</li>
-        <li className="underline__transition">Editor</li>
+        <li className="underline__transition">
+          <a href="/problems">Problems</a>
+        </li>
+        <li className="underline__transition">
+          <a href="/editor">Editor</a>
+        </li>
         <li className="underline__transition text-xl">
-          <AiOutlineUser />
+          <a href="/profile" title="Profile">
+            <AiOutlineUser />
+          </a>
         </li>
       </ul>
     </div>

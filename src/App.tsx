@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Header from "./components/layout/header";
 import Landing from "./pages/Landing";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Profile } from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/editor",
     element: <Home />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
