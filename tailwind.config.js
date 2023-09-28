@@ -14,6 +14,12 @@ module.exports = {
         "font-tertiary": "rgb(255, 255, 255,0.5)",
         "editor-surface": "rgb(30, 30, 30)",
       },
+      dropShadow: {
+        glow: [
+          "0 0px 20px rgba(255,255, 255)",
+          "0 0px 65px rgba(255, 255,255)",
+        ],
+      },
       fontFamily: {
         body: [
           "-apple-system",

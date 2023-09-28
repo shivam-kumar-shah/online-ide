@@ -1,15 +1,17 @@
 import Editor, { useMonaco, loader } from "@monaco-editor/react";
 import { useState } from "react";
-
+import ToolBar from "./components/toolBar";
 type Props = {};
 
 const CodeEditor = (props: Props) => {
   const [state, setState] = useState("// some comment");
+
   return (
     <div
       id="code__editor"
-      className="h-full w-1/2 resize-x rounded-md border border-font-secondary bg-editor-surface py-6"
+      className="flex h-full w-1/2 resize-x flex-col rounded-md border border-font-secondary bg-editor-surface"
     >
+      <ToolBar />
       <Editor
         defaultLanguage="typescript"
         value={state}
@@ -22,6 +24,7 @@ const CodeEditor = (props: Props) => {
           autoClosingBrackets: "always",
           formatOnType: true,
           formatOnPaste: true,
+          minimap: { enabled: false },
         }}
       />
     </div>
