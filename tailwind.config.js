@@ -8,6 +8,7 @@ module.exports = {
         accent: "rgb(102, 100, 236)",
         "accent-light": "rgb(94, 115, 240)",
         surface: "rgb(27, 31, 36)",
+        "surface-secondary": "rgb(40, 40, 40)",
         "font-primary": "rgb(255, 255, 255)",
         "font-secondary": "rgb(69, 74, 79)",
         "font-tertiary": "rgb(255, 255, 255,0.5)",

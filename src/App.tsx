@@ -4,6 +4,7 @@ import Header from "./components/layout/header";
 import Landing from "./pages/Landing";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Problems from "./pages/Problems";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/problems",
     element: <Problems />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
