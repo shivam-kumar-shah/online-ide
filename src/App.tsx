@@ -5,6 +5,8 @@ import Landing from "./pages/Landing";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Problems from "./pages/Problems";
 import Profile from "./pages/Profile";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="app grid h-screen w-screen items-center bg-surface font-body text-font-primary">
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }
