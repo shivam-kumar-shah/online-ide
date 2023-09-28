@@ -30,3 +30,7 @@ a.underline__transition::after {
 .table__body-row__cell {
   @apply whitespace-nowrap py-4 pl-4 pr-8;
 }
+
+.table__body .table__body-row:nth-child(odd) {
+  @apply bg-font-secondary;
+}

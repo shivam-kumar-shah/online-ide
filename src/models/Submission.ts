@@ -1,4 +1,4 @@
-import { LanguageEnum } from "./LanguageEnums";
+import { LanguageEnum } from "./LanguageEnum";
 
 export interface Submission {
   id: string;

@@ -2,7 +2,7 @@ import React from "react";
 import { TableHeader } from "./TableHeader";
 import { TableRow } from "./TableRow";
 import { Submission } from "../../../models/Submission";
-import { LanguageEnum } from "../../../models/LanguageEnums";
+import { LanguageEnum } from "../../../models/LanguageEnum";
 
 type Props = {};
 
