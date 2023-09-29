@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-interface CodeState {
+export interface CodeState {
   lang: LangEnum;
   source: string;
   input?: string;
@@ -9,14 +10,11 @@ interface CodeState {
   loading: boolean;
   message: string | null;
 }
-
-enum LangEnum {
-  cpp = "c++",
-  java = "javac",
+export enum LangEnum {
+  cpp = "cpp",
+  java = "java",
   python = "python",
 }
-
-
 const initialState: CodeState = {
   lang: LangEnum.cpp,
   source: "",
@@ -35,6 +33,7 @@ export const codeSlice = createSlice({
       state.source = action.payload;
     },
     setLang: (state, action: PayloadAction<LangEnum>) => {
+      console.log(action.payload);
       state.lang = action.payload;
     },
     setInput: (state, action: PayloadAction<string>) => {
@@ -51,6 +50,6 @@ export const codeSlice = createSlice({
     },
   },
 });
-
+export const codeSelector = (state: RootState) => state.codeReducer;
 export const codeAction = codeSlice.actions;
 export const codeReducer = codeSlice.reducer;

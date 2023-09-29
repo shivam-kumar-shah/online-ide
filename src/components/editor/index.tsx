@@ -1,16 +1,24 @@
-import Editor, { useMonaco, loader } from "@monaco-editor/react";
-import { useState } from "react";
+import Editor, { useMonaco, loader, OnMount } from "@monaco-editor/react";
+import { useEffect, useRef, useState } from "react";
 import ToolBar from "./components/toolBar";
 import { useDispatch, useSelector } from "react-redux";
-import { codeAction } from "../../redux/reducers/codeReducer";
-import { RootState } from "../../redux/store";
+import { codeAction, codeSelector } from "../../redux/reducers/codeReducer";
 import Console from "./components/console";
-type Props = {};
+interface CodeEditorProps {
+  initialValue?: string;
+}
 
-const CodeEditor = (props: Props) => {
-  const state = useSelector((state: RootState) => state.codeReducer);
-  const { source } = state;
+const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue }) => {
+  const state = useSelector(codeSelector);
+  const { source, lang } = state;
   const dispatch = useDispatch();
+
+  // To get ref of the editor
+  // const editorRef = useRef<any>(null);
+  // onMount={handleEditorDidMount} (property in component);
+  // const handleEditorDidMount: OnMount = (editor, monaco) => {
+  //   editorRef.current = editor;
+  // };
 
   return (
     <div
@@ -19,8 +27,9 @@ const CodeEditor = (props: Props) => {
     >
       <ToolBar />
       <Editor
-        defaultLanguage="typescript"
+        defaultValue={initialValue}
         value={source}
+        language={lang.toString()}
         className="w-full grow rounded-md pt-3"
         theme="vs-dark"
         onChange={(value) => dispatch(codeAction.setSource(value ?? ""))}
@@ -31,6 +40,11 @@ const CodeEditor = (props: Props) => {
           formatOnType: true,
           formatOnPaste: true,
           minimap: { enabled: false },
+          wordWrap: "on",
+          showUnused: false,
+          fontSize: 16,
+          // scrollBeyondLastLine:false,
+          automaticLayout: true,
         }}
       />
       <Console />
