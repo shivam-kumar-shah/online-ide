@@ -9,9 +9,9 @@ const ToolBar = (props: Props) => {
     reset: false,
   });
   return (
-    <div className="toolbar flex w-full justify-between px-6 py-4">
+    <div className="toolbar flex w-full items-center justify-between border-b border-font-secondary bg-surface-secondary px-4 py-2">
       <div className="lang-select">
-        <select name="lang" title="lang" className="bg-editor-surface">
+        <select name="lang" title="lang" className="bg-surface-secondary">
           <option value="c++">C++</option>
           <option value="java">JAVA</option>
           <option value="python">Python3</option>
@@ -20,7 +20,7 @@ const ToolBar = (props: Props) => {
       <div className="tools flex gap-2 text-lg text-font-tertiary">
         <div className="relative">
           <MdSettings
-            className="hover:drop-shadow-glow cursor-pointer hover:text-font-primary"
+            className="cursor-pointer hover:text-font-primary hover:drop-shadow-glow"
             onMouseOver={() =>
               setShowOptionHint({ ...showOptionHint, settings: true })
             }
@@ -36,7 +36,7 @@ const ToolBar = (props: Props) => {
         </div>
         <div className="relative">
           <MdRefresh
-            className=" hover:drop-shadow-glow cursor-pointer  hover:text-font-primary"
+            className=" cursor-pointer hover:text-font-primary  hover:drop-shadow-glow"
             onMouseOver={() =>
               setShowOptionHint({ ...showOptionHint, reset: true })
             }

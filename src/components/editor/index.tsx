@@ -4,12 +4,14 @@ import ToolBar from "./components/toolBar";
 import { useDispatch, useSelector } from "react-redux";
 import { codeAction } from "../../redux/reducers/codeReducer";
 import { RootState } from "../../redux/store";
+import Console from "./components/console";
 type Props = {};
 
 const CodeEditor = (props: Props) => {
   const state = useSelector((state: RootState) => state.codeReducer);
   const { source } = state;
   const dispatch = useDispatch();
+
   return (
     <div
       id="code__editor"
@@ -19,7 +21,7 @@ const CodeEditor = (props: Props) => {
       <Editor
         defaultLanguage="typescript"
         value={source}
-        className="h-full w-full rounded-md"
+        className="w-full grow rounded-md pt-3"
         theme="vs-dark"
         onChange={(value) => dispatch(codeAction.setSource(value ?? ""))}
         options={{
@@ -31,6 +33,7 @@ const CodeEditor = (props: Props) => {
           minimap: { enabled: false },
         }}
       />
+      <Console />
     </div>
   );
 };
