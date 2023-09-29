@@ -10,7 +10,7 @@ const Form = (props: Props) => {
   const [isSignIn, setIsSignIn] = useState(false);
 
   return (
-    <section className="flex h-full w-2/5 flex-col justify-center gap-y-4 pl-8">
+    <section className="flex h-full w-full flex-col justify-center gap-y-4 sm:w-2/5 sm:pl-8">
       <div className="flex flex-col text-lg">
         <div className="greeting flex flex-row items-center gap-x-2 text-primary">
           <FaHandPeace className="" />

@@ -17,6 +17,20 @@
   @apply bg-font-primary transition-all ease-in-out;
 }
 
+a.underline__transition::after {
+  left: -200%;
+  @apply bg-primary;
+}
+
 .underline__transition:hover::after {
   left: 0;
+}
+
+.table__header-cell,
+.table__body-row__cell {
+  @apply whitespace-nowrap py-4 pl-4 pr-8;
+}
+
+.table__body .table__body-row:nth-child(odd) {
+  @apply bg-font-secondary;
 }
