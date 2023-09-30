@@ -6,8 +6,10 @@ export const store = configureStore({
   reducer: {
     codeReducer,
   },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(loggerMiddleware),
+  middleware: (getDefaultMiddleware) => [
+    loggerMiddleware,
+    ...getDefaultMiddleware(),
+  ],
 });
 
 export type RootState = ReturnType<typeof store.getState>;
