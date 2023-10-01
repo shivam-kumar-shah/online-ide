@@ -69,19 +69,24 @@ For more information on these technologies, refer to the following resources:
 - [Monaco Editor Repository](https://github.com/microsoft/monaco-editor)
 - [React Monaco NPM Package](https://www.npmjs.com/package/react-monaco-editor)
 
+> Deployment link - [https://online-ide-sigma.vercel.app/](https://online-ide-sigma.vercel.app/)
+
 ## Contributing
 
 Contributions are welcome! If you have any ideas, bug fixes, or improvements, please open an issue or submit a pull request.
+
+---
 
 **Note:** This is the frontend repository for the Online IDE project. For the backend, please refer to the [online-ide-backend](https://github.com/shivam-kumar-shah/online-ide-backend).
 
 For hosting, the application is deployed on Vercel. You can access the live version at [Online IDE on Vercel](https://online-ide-sigma.vercel.app/).
 
-
 ## Contact
 
 If you have any questions or suggestions, feel free to reach out to us at shivam-kumar-shah@outlook.com
 
-Happy chatting! 🚀
+---
+
+*Happy Coding!* 🚀
 
  
