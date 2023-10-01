@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Online IDE - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Online IDE Logo](https://your-logo-url.com)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Online IDE is a web application designed for solving coding questions and writing and evaluating code. It provides an intuitive interface with a powerful code editor based on Microsoft's Monaco Editor. Users can write code, test it, and receive immediate feedback.
 
-### `npm start`
+This project uses React.js for the frontend, integrating the React Monaco Editor for the code editor. Tailwind CSS is employed for styling, ensuring a clean and responsive design. For routing within the application, React Router DOM is utilized.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Write and edit code in a user-friendly environment.
+- Solve coding questions with ease.
+- Immediate feedback on code evaluation.
+- Intuitive user interface for enhanced user experience.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- React Monaco Editor
+- Tailwind CSS
+- React Router DOM
+- React Rewired
+- Webpack (configured with React Rewired)
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository from the [Online IDE GitHub Repo](https://github.com/your-username/online-ide).
+2. Install the required dependencies using `npm install`.
+3. Start the development server with `npm start`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+1. Open the application in your preferred web browser.
+2. Write and edit code in the Monaco Editor.
+3. Use the provided features to solve coding questions and evaluate code.
+4. Enjoy the seamless experience!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project uses React Rewired to configure Webpack in order to support workers for code completion and IntelliSense in the code editor. This ensures a smooth and efficient coding experience.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For more information on these technologies, refer to the following resources:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [React Rewired](https://www.npmjs.com/package/react-app-rewired)
+- [Monaco Editor Repository](https://github.com/microsoft/monaco-editor)
+- [React Monaco NPM Package](https://www.npmjs.com/package/react-monaco-editor)
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are welcome! If you have any ideas, bug fixes, or improvements, please open an issue or submit a pull request.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Note:** This is the frontend repository for the Online IDE project. For the backend, please refer to the [corresponding backend repository](https://github.com/your-username/online-ide-backend).
+
+For hosting, the application is deployed on Vercel. You can access the live version at [Online IDE on Vercel](https://online-ide.vercel.app/).
+
+
+## Contact
+
+If you have any questions or suggestions, feel free to reach out to us at shivam-kumar-shah@outlook.com
+
+Happy chatting! 🚀
+
+ 
