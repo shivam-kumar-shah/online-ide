@@ -1,6 +1,6 @@
 # Online IDE - Frontend
 
-![Online IDE Logo](https://your-logo-url.com)
+![Online IDE](https://github.com/shivam-kumar-shah/online-ide/assets/134827809/33ab5c1d-1db3-443f-8ac2-0b7144118cdb)
 
 ## Description
 
@@ -26,11 +26,31 @@ This project uses React.js for the frontend, integrating the React Monaco Editor
 
 ## Getting Started
 
-To run this project locally, follow these steps:
+To run this project locally:
 
-1. Clone the repository from the [Online IDE GitHub Repo](https://github.com/your-username/online-ide).
-2. Install the required dependencies using `npm install`.
-3. Start the development server with `npm start`.
+1. Clone the repository:
+
+```bash
+   git clone https://github.com/shivam-kumar-shah/nextjs-chat-app
+```
+
+2. Install Dependencies:    
+
+```bash
+    cd nextjs-messenger-clone
+    npm install
+```
+
+3. Deploy the backend and code-judge-engine:
+
+   > Follow instructions from - https://github.com/shivam-kumar-shah/online-ide-backend
+
+4. Start the development Server
+ 
+
+```bash
+     npm run start
+ ```
 
 ## Usage
 
@@ -53,9 +73,9 @@ For more information on these technologies, refer to the following resources:
 
 Contributions are welcome! If you have any ideas, bug fixes, or improvements, please open an issue or submit a pull request.
 
-**Note:** This is the frontend repository for the Online IDE project. For the backend, please refer to the [corresponding backend repository](https://github.com/your-username/online-ide-backend).
+**Note:** This is the frontend repository for the Online IDE project. For the backend, please refer to the [online-ide-backend](https://github.com/shivam-kumar-shah/online-ide-backend).
 
-For hosting, the application is deployed on Vercel. You can access the live version at [Online IDE on Vercel](https://online-ide.vercel.app/).
+For hosting, the application is deployed on Vercel. You can access the live version at [Online IDE on Vercel](https://online-ide-sigma.vercel.app/).
 
 
 ## Contact
