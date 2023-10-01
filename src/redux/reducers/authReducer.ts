@@ -1,4 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 export interface User {
   username: string;
@@ -9,6 +10,19 @@ export interface AuthState {
   user: User | null;
   accessToken: string | null;
 }
+export interface AuthCredentials {
+  username?: string;
+  email: string;
+  password: string;
+}
+
+export const signUpAsyncThunk = createAsyncThunk(
+  "auth/signup",
+  async (cred: AuthCredentials, thunkApi) => {
+    try {
+    } catch (error) {}
+  },
+);
 
 const initialState: AuthState = {
   user: null,
@@ -32,3 +46,4 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const authActions = authSlice.actions;

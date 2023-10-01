@@ -12,6 +12,7 @@
     "@types/node": "^16.18.50",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "axios": "^1.5.1",
     "clsx": "^2.0.0",
     "monaco-editor": "^0.43.0",
     "monaco-editor-auto-typings": "^0.4.4",
@@ -52,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "eslint": "^8.50.0",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",

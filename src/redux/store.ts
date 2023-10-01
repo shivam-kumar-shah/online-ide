@@ -6,10 +6,10 @@ export const store = configureStore({
   reducer: {
     codeReducer,
   },
-  middleware: (getDefaultMiddleware) => [
-    loggerMiddleware,
-    ...getDefaultMiddleware(),
-  ],
+  // middleware: (getDefaultMiddleware) => [
+  //   loggerMiddleware,
+  //   ...getDefaultMiddleware(),
+  // ],
 });
 
 export type RootState = ReturnType<typeof store.getState>;
