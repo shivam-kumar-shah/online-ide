@@ -9,8 +9,6 @@ import {
 import { FaHandPeace } from "react-icons/fa";
 import Button from "../components/ui/Button";
 import SubTitle from "../components/ui/SubTitle";
-import SignUp from "../components/landing/SignUp";
-import SignIn from "../components/landing/SIgnIn";
 import CallToAction from "../components/landing/CallToAction";
 import Form from "../components/landing/Form";
 
