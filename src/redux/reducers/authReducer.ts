@@ -1,32 +1,39 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import axios from "../../api/axios";
 
-export interface User {
-  username: string;
-  email: string;
-}
+import {
+  AuthCredentials,
+  AuthError,
+  AuthResponse,
+  AuthState,
+  User,
+} from "./types/auth";
+import { AxiosError } from "axios";
 
-export interface AuthState {
-  user: User | null;
-  accessToken: string | null;
-}
-export interface AuthCredentials {
-  username?: string;
-  email: string;
-  password: string;
-}
+export const signUpAsyncThunk = createAsyncThunk<
+  AuthResponse,
+  AuthCredentials,
+  { rejectValue: AuthError }
+>("auth/signup", async (cred, thunkApi) => {
+  try {
+    const response = await axios.post<AuthResponse>("/users/signup");
+    const data = response.data;
+    return data;
+  } catch (error: any) {
+    const err = error as AxiosError<AuthError>;
 
-export const signUpAsyncThunk = createAsyncThunk(
-  "auth/signup",
-  async (cred: AuthCredentials, thunkApi) => {
-    try {
-    } catch (error) {}
-  },
-);
+    return thunkApi.rejectWithValue({
+      message: err?.response?.data?.message ?? "",
+    });
+  }
+});
 
 const initialState: AuthState = {
   user: null,
   accessToken: null,
+  loading: false,
+  error: null,
 };
 
 export const authSlice = createSlice({
@@ -42,6 +49,20 @@ export const authSlice = createSlice({
     setAuthState: (state, action: PayloadAction<AuthState>) => {
       state = action.payload;
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(signUpAsyncThunk.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(signUpAsyncThunk.fulfilled, (state, { payload }) => {
+      state.accessToken = payload.accessToken;
+      state.loading = false;
+      state.user = payload.user;
+    });
+    builder.addCase(signUpAsyncThunk.rejected, (state, { payload }) => {
+      state.loading = false;
+    });
   },
 });
 
