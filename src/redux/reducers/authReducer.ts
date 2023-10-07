@@ -1,4 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { RootState } from "../store";
 import axios from "../../api/axios";
 import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
@@ -27,7 +28,7 @@ export const signUpAsyncThunk = createAsyncThunk<
   { rejectValue: AuthError }
 >("auth/signup", async (cred, thunkApi) => {
   try {
-    const response = await axios.post<AuthResponse>("/users/signup");
+    const response = await axios.post<AuthResponse>("/users/signup", cred);
     const data = response.data;
     return data;
   } catch (error: any) {
@@ -65,18 +66,22 @@ export const loginAsyncThunk = createAsyncThunk<
   AuthCredentials,
   { rejectValue: AuthError }
 >("auth/login", async (cred, thunkApi) => {
-  const axiosPrivate = useAxiosPrivate();
+  console.log(cred);
+  // const axiosPrivate = useAxiosPrivate();
+  console.log("axiosPrivate");
   try {
-    const response = await axiosPrivate.post<AuthResponse>(
-      "/users/create-session",
-      JSON.stringify({ email: cred.email, password: cred.password }),
-    );
+    const response = await axios.post<AuthResponse>("/users/create-session", {
+      email: cred.email,
+      password: cred.password,
+    });
+    console.log(response);
     const data = response.data;
     return data;
   } catch (error) {
     const err = error as AxiosError<AuthError>;
+    console.log(err);
     return thunkApi.rejectWithValue({
-      message: "",
+      message: err.stack ?? "",
     });
   }
 });
@@ -113,6 +118,16 @@ export const authSlice = createSlice({
     builder.addCase(signUpAsyncThunk.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload!.message;
+    });
+    builder.addCase(loginAsyncThunk.rejected, (state, { payload }) => {
+      console.log(payload);
+      state.loading = false;
+      state.error = payload?.message ?? "Error in login";
+    });
+    builder.addCase(loginAsyncThunk.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.accessToken = payload.accessToken;
+      state.user = payload.user;
     });
     // builder.addCase(refreshTokenAsyncThunk.rejected, (state, { payload }) => {
     //   state.error = payload!.message;

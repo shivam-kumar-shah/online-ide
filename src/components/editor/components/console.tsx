@@ -1,9 +1,19 @@
-import React, { ReactNode, useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
+import "../../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import Button from "../../ui/Button";
+import { runCodeAsyncThunk } from "../../../redux/reducers/codeReducer";
 type Props = {};
 
 const Console = (props: Props) => {
   const [selectedTab, setSelectedTab] = useState<"tc" | "res">("tc");
+  const dispatch = useAppDispatch();
+  const onCodeRun = () => {
+    dispatch(runCodeAsyncThunk(null));
+  };
+
+  const onCodeSubmit = () => {};
 
   return (
     <div className="flex w-full flex-col border-t border-font-secondary bg-yellow-500">
@@ -11,7 +21,7 @@ const Console = (props: Props) => {
         <div
           className={clsx(
             "mx-2 cursor-pointer pb-1 leading-tight hover:text-font-primary",
-            selectedTab == "tc"
+            selectedTab === "tc"
               ? " border-b-2  border-b-white text-font-primary"
               : "text-font-tertiary",
           )}
@@ -22,7 +32,7 @@ const Console = (props: Props) => {
         <div
           className={clsx(
             "mx-2 cursor-pointer pb-1 leading-tight hover:text-font-primary",
-            selectedTab == "res"
+            selectedTab === "res"
               ? " border-b-2  border-b-white text-font-primary"
               : "text-font-tertiary",
           )}
@@ -40,8 +50,15 @@ const Console = (props: Props) => {
       <div className="toolbar flex w-full justify-between bg-surface-secondary px-6 py-2">
         <div className="console-btn ">Console</div>
         <div className="action-btn flex gap-4">
-          <button>Run</button>
-          <button>Submit</button>
+          <Button
+            className="min-w-[4rem] bg-green-400 py-1"
+            onClick={onCodeRun}
+          >
+            Run
+          </Button>
+          <Button className="bg-accent py-1" onClick={onCodeSubmit}>
+            Submit
+          </Button>
         </div>
       </div>
     </div>

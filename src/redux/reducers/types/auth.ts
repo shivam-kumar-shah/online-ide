@@ -4,7 +4,9 @@ export interface User {
 }
 export type AuthResponse = {
   message: string;
-} & AuthState;
+  user: User | null;
+  accessToken: string | null;
+};
 
 export interface AuthState {
   user: User | null;

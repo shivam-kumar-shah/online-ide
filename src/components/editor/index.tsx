@@ -1,5 +1,5 @@
-import Editor, { useMonaco, loader, OnMount } from "@monaco-editor/react";
-import { useEffect, useRef, useState } from "react";
+import Editor from "@monaco-editor/react";
+import { useState } from "react";
 import ToolBar from "./components/toolBar";
 import { useDispatch, useSelector } from "react-redux";
 import { codeAction, codeSelector } from "../../redux/reducers/codeReducer";

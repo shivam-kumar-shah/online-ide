@@ -1,10 +1,12 @@
 import axios from "../api/axios";
 import { authActions } from "../redux/reducers/authReducer";
-import { useDispatch } from "react-redux";
 import { AuthResponse } from "../redux/reducers/types/auth";
+import { useAppDispatch } from "../redux/store";
 
 const useRefreshToken = () => {
-  const dispatch = useDispatch();
+  console.log("2.1");
+  const dispatch = useAppDispatch();
+  console.log("2.2");
 
   const refresh = async () => {
     const response = await axios.get<AuthResponse>("/users/refresh", {
@@ -15,6 +17,7 @@ const useRefreshToken = () => {
 
     return data.accessToken!;
   };
+
   return refresh;
 };
 export default useRefreshToken;

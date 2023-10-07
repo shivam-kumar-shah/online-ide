@@ -5,7 +5,9 @@ import { authSelector } from "../redux/reducers/authReducer";
 import { useEffect } from "react";
 import { AxiosError, InternalAxiosRequestConfig } from "axios";
 export const useAxiosPrivate = () => {
+  console.log(1);
   const refresh = useRefreshToken();
+  console.log(2);
   const { accessToken } = useSelector(authSelector);
 
   useEffect(() => {
@@ -37,6 +39,8 @@ export const useAxiosPrivate = () => {
       axiosPrivate.interceptors.response.eject(responseIntercept);
     };
   }, [accessToken, refresh]);
+
+  console.log(3);
 
   return axiosPrivate;
 };
