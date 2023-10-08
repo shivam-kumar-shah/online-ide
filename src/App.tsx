@@ -6,7 +6,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Problems from "./pages/Problems";
 import Profile from "./pages/Profile";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import store from "./redux/store";
+import { configureAxios } from "./api/axiosPrivate";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
 ]);
+
+configureAxios(store);
 
 function App() {
   return (

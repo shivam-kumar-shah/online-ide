@@ -1,3 +1,8 @@
+import { Dispatch } from "react";
+import { RootState } from "../../store";
+import { AuthError } from "./auth";
+import { AnyAction } from "@reduxjs/toolkit";
+
 export interface CodeState {
   lang: LangEnum;
   source: string;
@@ -28,3 +33,14 @@ export type CodeResponse =
       submission_id: string;
     }
   | { status: string };
+
+export type CodeThunkConfig = {
+  rejectValue: AuthError;
+  state: RootState;
+  dispatch?: Dispatch<AnyAction> | undefined;
+  extra?: unknown;
+  serializedErrorType?: unknown;
+  pendingMeta?: unknown;
+  fulfilledMeta?: unknown;
+  rejectedMeta?: unknown;
+};

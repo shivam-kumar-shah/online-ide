@@ -1,9 +1,10 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState, useAppSelector } from "../store";
+import { RootState } from "../store";
 import { CodeState, LangEnum, CodeResponse, CodeSuccess } from "./types/code";
 import { AuthError } from "./types/auth";
 import { AxiosError } from "axios";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import axiosPrivate from "../../api/axiosPrivate";
+import axios from "../../api/axios";
 
 const initialState: CodeState = {
   lang: LangEnum.cpp,
@@ -18,17 +19,16 @@ const initialState: CodeState = {
 export const runCodeAsyncThunk = createAsyncThunk<
   CodeSuccess,
   null,
-  { rejectValue: AuthError }
+  { rejectValue: AuthError; state: RootState }
 >("code/run", async (_, thunkApi) => {
-  const codeState = useAppSelector(codeSelector);
-  const axiosPrivate = useAxiosPrivate();
-
+  const codeState = thunkApi.getState().codeReducer;
+  // console.log(axiosPrivate, "axiosPrivate");
   try {
+    console.log("Code run called");
     const response = await axiosPrivate.post("/users/submit", {
       lang: codeState.lang.valueOf(),
       src: codeState.source,
     });
-
     const data = response.data;
     console.log(data);
     return data;
@@ -81,6 +81,5 @@ export const codeSlice = createSlice({
     });
   },
 });
-export const codeSelector = (state: RootState) => state.codeReducer;
 export const codeAction = codeSlice.actions;
 export const codeReducer = codeSlice.reducer;

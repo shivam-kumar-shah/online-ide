@@ -1,8 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "../store";
 import axios from "../../api/axios";
-import { useAxiosPrivate } from "../../hooks/useAxiosPrivate";
 
 import {
   AuthCredentials,
@@ -140,4 +138,3 @@ export const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 export const authActions = authSlice.actions;
-export const authSelector = (state: RootState) => state.authReducer;
