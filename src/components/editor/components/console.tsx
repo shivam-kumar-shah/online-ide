@@ -1,6 +1,5 @@
 import { useState } from "react";
 import clsx from "clsx";
-// import "../../../redux/store";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
 import { runCodeAsyncThunk } from "../../../redux/reducers/codeReducer";

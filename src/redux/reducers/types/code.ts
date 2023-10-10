@@ -11,7 +11,7 @@ export interface CodeState {
   error?: string;
   loading: boolean;
   message: string | null;
-  submissionId?: string;
+  submissionId: string | null;
 }
 export enum LangEnum {
   cpp = "cpp",

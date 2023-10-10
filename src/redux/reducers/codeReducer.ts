@@ -4,7 +4,6 @@ import { CodeState, LangEnum, CodeResponse, CodeSuccess } from "./types/code";
 import { AuthError } from "./types/auth";
 import { AxiosError } from "axios";
 import axiosPrivate from "../../api/axiosPrivate";
-import axios from "../../api/axios";
 
 const initialState: CodeState = {
   lang: LangEnum.cpp,
@@ -14,6 +13,7 @@ const initialState: CodeState = {
   loading: false,
   message: null,
   error: "",
+  submissionId: null,
 };
 
 export const runCodeAsyncThunk = createAsyncThunk<
