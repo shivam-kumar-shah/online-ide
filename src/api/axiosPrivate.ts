@@ -2,8 +2,8 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import axiosInstance from "./axios";
 
 import { StoreType } from "../redux/reducers/types/storeType";
-import { AuthResponse } from "../redux/reducers/types/auth";
-import { authActions } from "../redux/reducers/authReducer";
+import { AuthResponse } from "../redux/reducers/Auth/types/auth";
+import { authActions } from "../redux/reducers/Auth/authReducer";
 const BASE_URL = process.env.REACT_APP_BASE_URL!;
 const axiosPrivate = axios.create({
   baseURL: BASE_URL,

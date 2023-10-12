@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import axios from "../../api/axios";
+import axios from "../../../api/axios";
 
 import {
   AuthCredentials,
@@ -10,6 +10,7 @@ import {
   User,
 } from "./types/auth";
 import { AxiosError } from "axios";
+import { authApiSlice } from "./authApiSlice";
 
 const initialState: AuthState = {
   user: null,
@@ -36,27 +37,6 @@ export const signUpAsyncThunk = createAsyncThunk<
     });
   }
 });
-
-// refresh-token Thunk
-
-// export const refreshTokenAsyncThunk = createAsyncThunk<
-//   AuthResponse,
-//   AuthCredentials,
-//   { rejectValue: AuthError }
-// >("auth/refresh", async (cred, thunkApi) => {
-//   try {
-//     const response = await axios.get<AuthResponse>("/users/refresh", {
-//       withCredentials: true,
-//     });
-//     const data = response.data;
-//     return data;
-//   } catch (error) {
-//     const err = error as AxiosError<AuthError>;
-//     return thunkApi.rejectWithValue({
-//       message: err?.response?.data?.message ?? "Error in refreshThunk",
-//     });
-//   }
-// });
 
 // SignIn thunk
 export const loginAsyncThunk = createAsyncThunk<
@@ -117,22 +97,23 @@ export const authSlice = createSlice({
       state.loading = false;
       state.error = payload!.message;
     });
-    builder.addCase(loginAsyncThunk.rejected, (state, { payload }) => {
-      console.log(payload);
-      state.loading = false;
-      state.error = payload?.message ?? "Error in login";
-    });
-    builder.addCase(loginAsyncThunk.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.accessToken = payload.accessToken;
-      state.user = payload.user;
-    });
-    // builder.addCase(refreshTokenAsyncThunk.rejected, (state, { payload }) => {
-    //   state.error = payload!.message;
+    // builder.addCase(loginAsyncThunk.rejected, (state, { payload }) => {
+    //   console.log(payload);
+    //   state.loading = false;
+    //   state.error = payload?.message ?? "Error in login";
     // });
-    // builder.addCase(refreshTokenAsyncThunk.fulfilled, (state, { payload }) => {
+    // builder.addCase(loginAsyncThunk.fulfilled, (state, { payload }) => {
+    //   state.loading = false;
     //   state.accessToken = payload.accessToken;
+    //   state.user = payload.user;
     // });
+    builder.addMatcher(
+      authApiSlice.endpoints.login.matchFulfilled,
+      (state, { payload }) => {
+        state.accessToken = payload.accessToken;
+        state.user = payload.user;
+      },
+    );
   },
 });
 

@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
-import { RootState } from "../../store";
-import { AuthError } from "./auth";
+import { RootState } from "../../../store";
+import { AuthError } from "../../Auth/types/auth";
 import { AnyAction } from "@reduxjs/toolkit";
 
 export interface CodeState {

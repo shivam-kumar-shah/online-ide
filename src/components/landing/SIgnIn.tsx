@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import Input from "../ui/Input";
 import { MdEmail, MdOutlinePassword } from "react-icons/md";
 import Button from "../ui/Button";
-import { loginAsyncThunk } from "../../redux/reducers/authReducer";
-import { AuthCredentials } from "../../redux/reducers/types/auth";
+// import { loginAsyncThunk } from "../../redux/reducers/Auth/authReducer";
+import { useLoginMutation } from "../../redux/reducers/Auth/authApiSlice";
+import { AuthCredentials } from "../../redux/reducers/Auth/types/auth";
 import { useAppDispatch } from "../../redux/store";
 
 type Props = { className?: string };
 
 const SignIn = ({ className }: Props) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [login, { isLoading }] = useLoginMutation();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const cred: AuthCredentials = { email: email, password: password };
-    dispatch(loginAsyncThunk(cred));
+
+    try {
+      await login(cred).unwrap();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

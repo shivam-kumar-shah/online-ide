@@ -11,7 +11,7 @@
 // import SubTitle from "../components/ui/SubTitle";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../redux/store";
-import {} from "../redux/reducers/authReducer";
+import {} from "../redux/reducers/Auth/authReducer";
 import CallToAction from "../components/landing/CallToAction";
 import Form from "../components/landing/Form";
 

@@ -5,3 +5,9 @@ declare module "axios" {
     sent: boolean;
   }
 }
+
+declare module "@reduxjs/toolkit/query/react" {
+  export interface FetchBaseQueryError {
+    originalStatus: number;
+  }
+}

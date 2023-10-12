@@ -2,7 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
-import { runCodeAsyncThunk } from "../../../redux/reducers/codeReducer";
+import { runCodeAsyncThunk } from "../../../redux/reducers/Code/codeReducer";
 type Props = {};
 
 const Console = (props: Props) => {

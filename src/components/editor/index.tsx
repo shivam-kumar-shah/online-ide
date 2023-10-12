@@ -2,7 +2,7 @@ import Editor from "@monaco-editor/react";
 import { useState } from "react";
 import ToolBar from "./components/toolBar";
 import { useDispatch, useSelector } from "react-redux";
-import { codeAction } from "../../redux/reducers/codeReducer";
+import { codeAction } from "../../redux/reducers/Code/codeReducer";
 import Console from "./components/console";
 import { codeSelector } from "../../redux/store";
 interface CodeEditorProps {

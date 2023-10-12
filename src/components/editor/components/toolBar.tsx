@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { MdRefresh, MdSettings } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { codeAction } from "../../../redux/reducers/codeReducer";
-import { LangEnum } from "../../../redux/reducers/types/code";
+import { codeAction } from "../../../redux/reducers/Code/codeReducer";
+import { LangEnum } from "../../../redux/reducers/Code/types/code";
 
 type Props = {};
 

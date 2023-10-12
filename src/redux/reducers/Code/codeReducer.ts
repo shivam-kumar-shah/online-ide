@@ -1,9 +1,9 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 import { CodeState, LangEnum, CodeResponse, CodeSuccess } from "./types/code";
-import { AuthError } from "./types/auth";
+import { AuthError } from "../Auth/types/auth";
 import { AxiosError } from "axios";
-import axiosPrivate from "../../api/axiosPrivate";
+import axiosPrivate from "../../../api/axiosPrivate";
 
 const initialState: CodeState = {
   lang: LangEnum.cpp,
