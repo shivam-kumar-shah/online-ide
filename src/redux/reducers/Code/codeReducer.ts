@@ -1,10 +1,10 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { CodeState, LangEnum, CodeResponse, CodeSuccess } from "./types/code";
+import { CodeState, LangEnum, CodeSuccess } from "./types/code";
 import { AuthError } from "../Auth/types/auth";
 import { AxiosError } from "axios";
 import axiosPrivate from "../../../api/axiosPrivate";
-
+import { codeApiSlice } from "./codeApiSlice";
 const initialState: CodeState = {
   lang: LangEnum.cpp,
   source: "",
@@ -66,18 +66,13 @@ export const codeSlice = createSlice({
   },
 
   extraReducers(builder) {
-    builder.addCase(runCodeAsyncThunk.pending, (state, { payload }) => {
-      state.loading = true;
-      console.log(payload);
-    });
-    builder.addCase(runCodeAsyncThunk.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.submissionId = payload.submissionId;
-    });
-    builder.addCase(runCodeAsyncThunk.rejected, (state, { payload }) => {
-      state.loading = false;
-      console.log(payload?.message);
-    });
+    builder.addMatcher(
+      codeApiSlice.endpoints.run.matchFulfilled,
+      (state, { payload }) => {
+        state.loading = false;
+        state.submissionId = payload.submissionId;
+      },
+    );
   },
 });
 export const codeAction = codeSlice.actions;

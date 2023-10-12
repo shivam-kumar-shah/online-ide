@@ -1,15 +1,20 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { codeSelector, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
-import { runCodeAsyncThunk } from "../../../redux/reducers/Code/codeReducer";
+import { useRunMutation } from "../../../redux/reducers/Code/codeApiSlice";
 type Props = {};
 
 const Console = (props: Props) => {
   const [selectedTab, setSelectedTab] = useState<"tc" | "res">("tc");
-  const dispatch = useAppDispatch();
-  const onCodeRun = () => {
-    dispatch(runCodeAsyncThunk(null));
+  const codeState = useAppSelector(codeSelector);
+  const [runCode, { isLoading }] = useRunMutation();
+  const onCodeRun = async () => {
+    try {
+      await runCode(codeState).unwrap();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const onCodeSubmit = () => {};

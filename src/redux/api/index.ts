@@ -18,9 +18,8 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders(headers, api) {
     const state = api.getState() as RootState;
     const token = state.authReducer.accessToken;
-
     if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
+      headers.set("authorization", `Bearer ${token}`);
     }
     return headers;
   },
@@ -29,27 +28,23 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  if (result?.error?.originalStatus === 403) {
+  if (result?.error?.originalStatus === 401) {
     console.log("sending refresh token");
 
     const refreshResult = (await baseQuery(
-      "/refresh",
+      "/users/refresh",
       api,
       extraOptions,
     )) as QueryReturnValue<
-      { refreshToken: string },
+      { accessToken: string },
       FetchBaseQueryError,
       FetchBaseQueryMeta
     >;
-
-    console.log(refreshResult);
-
     if (refreshResult?.data) {
       const state = api.getState() as RootState;
       const user = state.authReducer.user;
-
       api.dispatch(
-        authActions.setAccessToken(refreshResult?.data?.refreshToken),
+        authActions.setAccessToken(refreshResult?.data?.accessToken),
       );
       result = await baseQuery(args, api, extraOptions);
     } else {
@@ -58,7 +53,6 @@ const baseQueryWithReauth: BaseQueryFn = async (args, api, extraOptions) => {
       // api.dispatch()
     }
   }
-
   return result;
 };
 
