@@ -85,31 +85,29 @@ export const authSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder.addCase(signUpAsyncThunk.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(signUpAsyncThunk.fulfilled, (state, { payload }) => {
-      state.accessToken = payload.accessToken;
-      state.loading = false;
-      state.user = payload.user;
-    });
-    builder.addCase(signUpAsyncThunk.rejected, (state, { payload }) => {
-      state.loading = false;
-      state.error = payload!.message;
-    });
-    // builder.addCase(loginAsyncThunk.rejected, (state, { payload }) => {
-    //   console.log(payload);
-    //   state.loading = false;
-    //   state.error = payload?.message ?? "Error in login";
+    // builder.addCase(signUpAsyncThunk.pending, (state) => {
+    //   state.loading = true;
     // });
-    // builder.addCase(loginAsyncThunk.fulfilled, (state, { payload }) => {
-    //   state.loading = false;
+    // builder.addCase(signUpAsyncThunk.fulfilled, (state, { payload }) => {
     //   state.accessToken = payload.accessToken;
+    //   state.loading = false;
     //   state.user = payload.user;
+    // });
+    // builder.addCase(signUpAsyncThunk.rejected, (state, { payload }) => {
+    //   state.loading = false;
+    //   state.error = payload!.message;
     // });
     builder.addMatcher(
       authApiSlice.endpoints.login.matchFulfilled,
       (state, { payload }) => {
+        state.accessToken = payload.accessToken;
+        state.user = payload.user;
+      },
+    );
+    builder.addMatcher(
+      authApiSlice.endpoints.signUp.matchFulfilled,
+      (state, { payload }) => {
+        console.log(payload);
         state.accessToken = payload.accessToken;
         state.user = payload.user;
       },

@@ -22,7 +22,6 @@ export const runCodeAsyncThunk = createAsyncThunk<
   { rejectValue: AuthError; state: RootState }
 >("code/run", async (_, thunkApi) => {
   const codeState = thunkApi.getState().codeReducer;
-  // console.log(axiosPrivate, "axiosPrivate");
   try {
     console.log("Code run called");
     const response = await axiosPrivate.post("/users/submit", {

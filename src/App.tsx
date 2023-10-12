@@ -8,12 +8,24 @@ import Profile from "./pages/Profile";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { configureAxios } from "./api/axiosPrivate";
+import SignUp from "./components/landing/SignUp";
+import SignIn from "./components/landing/SIgnIn";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
-    index: true,
+    // index: true,
+    children: [
+      {
+        index: true,
+        element: <SignUp />,
+      },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+    ],
   },
   {
     path: "/editor",

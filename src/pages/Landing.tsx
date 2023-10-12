@@ -1,14 +1,3 @@
-// import { FaCode } from "react-icons/fa";
-// import Title from "../components/ui/Title";
-// import Input from "../components/ui/Input";
-// import {
-//   MdEmail,
-//   MdOutlineVerifiedUser,
-//   MdOutlinePassword,
-// } from "react-icons/md";
-// import { FaHandPeace } from "react-icons/fa";
-// import Button from "../components/ui/Button";
-// import SubTitle from "../components/ui/SubTitle";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../redux/store";
 import {} from "../redux/reducers/Auth/authReducer";

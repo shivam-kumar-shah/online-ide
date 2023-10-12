@@ -5,12 +5,10 @@ import Button from "../ui/Button";
 // import { loginAsyncThunk } from "../../redux/reducers/Auth/authReducer";
 import { useLoginMutation } from "../../redux/reducers/Auth/authApiSlice";
 import { AuthCredentials } from "../../redux/reducers/Auth/types/auth";
-import { useAppDispatch } from "../../redux/store";
 
 type Props = { className?: string };
 
 const SignIn = ({ className }: Props) => {
-  // const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, { isLoading }] = useLoginMutation();
