@@ -1,5 +1,5 @@
 import apiSlice from "../../api";
-import { CodeState, CodeSuccess } from "./types/code";
+import { CodeResponse, CodeState, CodeSuccess } from "./types/code";
 
 export const codeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +13,16 @@ export const codeApiSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
+    runResult: builder.query<CodeResponse, CodeState>({
+      query: (codeState) => {
+        const id = codeState.submissionId;
+        return {
+          url: `/users/results/${id ?? ""}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useRunMutation } = codeApiSlice;
+export const { useRunMutation, useRunResultQuery } = codeApiSlice;

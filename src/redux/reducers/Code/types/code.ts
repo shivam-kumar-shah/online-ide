@@ -12,6 +12,8 @@ export interface CodeState {
   loading: boolean;
   message: string | null;
   submissionId: string | null;
+  fetchResult?: boolean;
+  isSubmission?: boolean;
 }
 export enum LangEnum {
   cpp = "cpp",
@@ -24,15 +26,16 @@ export type CodeSuccess = {
   submissionId: string;
 };
 
-export type CodeResponse =
-  | {
-      src: string;
-      lang: string;
-      output: string;
-      stderr: string;
-      submission_id: string;
-    }
-  | { status: string };
+export type CodeResponse = {
+  status: string;
+  data?: {
+    src: string;
+    lang: string;
+    output: string;
+    stderr: string;
+    submission_id: string;
+  };
+};
 
 export type CodeThunkConfig = {
   rejectValue: AuthError;

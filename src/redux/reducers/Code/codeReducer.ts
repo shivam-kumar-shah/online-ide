@@ -71,6 +71,18 @@ export const codeSlice = createSlice({
       (state, { payload }) => {
         state.loading = false;
         state.submissionId = payload.submissionId;
+        state.fetchResult = true;
+      },
+    );
+    builder.addMatcher(
+      codeApiSlice.endpoints.runResult.matchFulfilled,
+      (state, { payload }) => {
+        if (payload.status === "ok") {
+          state.fetchResult = false;
+          const { output, stderr } = payload.data!;
+          state.error = stderr;
+          state.output = output;
+        }
       },
     );
   },

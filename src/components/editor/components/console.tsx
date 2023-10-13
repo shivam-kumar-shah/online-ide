@@ -1,14 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { codeSelector, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
-import { useRunMutation } from "../../../redux/reducers/Code/codeApiSlice";
+import {
+  useRunMutation,
+  useRunResultQuery,
+} from "../../../redux/reducers/Code/codeApiSlice";
 type Props = {};
 
 const Console = (props: Props) => {
   const [selectedTab, setSelectedTab] = useState<"tc" | "res">("tc");
   const codeState = useAppSelector(codeSelector);
   const [runCode, { isLoading }] = useRunMutation();
+
+  const {
+    data,
+    error,
+    isError,
+    isLoading: isFetchLoading,
+  } = useRunResultQuery(codeState, {
+    pollingInterval: 1000,
+    skip: !(codeState.fetchResult === true && codeState.submissionId !== null),
+  });
+
+  useEffect(() => {
+    if (!isFetchLoading) {
+      console.log(data);
+    }
+    if (!isError) {
+      console.log(error);
+    }
+  }, [isFetchLoading, isError]);
+
   const onCodeRun = async () => {
     try {
       await runCode(codeState).unwrap();
@@ -16,7 +39,6 @@ const Console = (props: Props) => {
       console.log(err);
     }
   };
-
   const onCodeSubmit = () => {};
 
   return (
