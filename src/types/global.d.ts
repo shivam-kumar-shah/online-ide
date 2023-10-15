@@ -11,3 +11,7 @@ declare module "@reduxjs/toolkit/query/react" {
     originalStatus: number;
   }
 }
+declare module "*.module.css" {
+  const content: Record<string, string>;
+  export default content;
+}

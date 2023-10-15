@@ -1,0 +1,69 @@
+.loading__background {
+  /* Adjust width to change size */
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  // backdrop-filter: blur(8px);
+  // background-color: rgba(253, 248, 248, 0.252);
+  // backdrop-filter: blur(8px);
+}
+
+.loading__placeholder {
+  border: 1px solid whitesmoke;
+  border-radius: 100%;
+  height: 20%;
+  aspect-ratio: 1;
+}
+
+.loading__action {
+  position: absolute;
+  border: 1px solid whitesmoke;
+  border-radius: 100%;
+  height: 20%;
+  aspect-ratio: 1;
+  animation-name: animate;
+  animation-iteration-count: infinite;
+  /* Adjust duration to change speed */
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes animate {
+  /* Main breakpoint */
+  0% {
+    left: 0;
+  }
+  /* For jumping motion */
+  16% {
+    transform: translateY(-200%);
+  }
+
+  /* Main breakpoint */
+  33% {
+    left: 50%;
+    transform: translateY(0%) translateX(-50%);
+  }
+  /* For jumping motion */
+  45% {
+    transform: translateY(-200%);
+  }
+
+  /* Main breakpoint */
+  66% {
+    left: 100%;
+    transform: translateY(0%) translateX(-100%);
+  }
+  /* For jumping motion */
+  85% {
+    transform: translateY(-400%);
+  }
+
+  /* Main breakpoint */
+  100% {
+    left: 0%;
+    transform: translateY(0%);
+  }
+}

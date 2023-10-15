@@ -6,31 +6,19 @@ import {
   useRunMutation,
   useRunResultQuery,
 } from "../../../redux/reducers/Code/codeApiSlice";
+import Loading from "../../ui/loading/Loading";
 type Props = {};
 
 const Console = (props: Props) => {
   const [selectedTab, setSelectedTab] = useState<"tc" | "res">("tc");
   const codeState = useAppSelector(codeSelector);
-  const [runCode, { isLoading }] = useRunMutation();
+  const [runCode] = useRunMutation();
+  const isLoading: boolean = false;
 
-  const {
-    data,
-    error,
-    isError,
-    isLoading: isFetchLoading,
-  } = useRunResultQuery(codeState, {
+  useRunResultQuery(codeState, {
     pollingInterval: 1000,
     skip: !(codeState.fetchResult === true && codeState.submissionId !== null),
   });
-
-  useEffect(() => {
-    if (!isFetchLoading) {
-      console.log(data);
-    }
-    if (!isError) {
-      console.log(error);
-    }
-  }, [isFetchLoading, isError]);
 
   const onCodeRun = async () => {
     try {
@@ -40,6 +28,10 @@ const Console = (props: Props) => {
     }
   };
   const onCodeSubmit = () => {};
+
+  useEffect(() => {
+    setSelectedTab("res");
+  }, [codeState.error, codeState.output]);
 
   return (
     <div className="flex w-full flex-col border-t border-font-secondary bg-yellow-500">
@@ -67,11 +59,34 @@ const Console = (props: Props) => {
           Result
         </div>
       </div>
-      <div className="h-48 w-full bg-surface">
-        <textarea
-          title="input-area"
-          className="h-full w-full bg-editor-surface p-2 text-font-primary focus:border-none"
-        ></textarea>
+      <div className={`h-48 w-full bg-surface`}>
+        {isLoading ? (
+          <div
+            className="wrapper h-full w-full grid place-items-center"
+            style={{
+              backgroundColor: "rgba(253, 248, 248, 0.252)",
+              backdropFilter: "blur(2px)",
+            }}
+          >
+            <Loading className="w-24 " loaderColor="bg-cyan-500" />
+          </div>
+        ) : selectedTab === "res" ? (
+          <textarea
+            title="input-area"
+            className="h-full w-full bg-editor-surface p-2 text-font-primary focus:border-none"
+            value={
+              (codeState.output && codeState.output) ||
+              (codeState.error && codeState.error)
+            }
+            disabled
+          ></textarea>
+        ) : (
+          <textarea
+            title="input-area"
+            className="h-full w-full bg-editor-surface p-2 text-font-primary focus:border-none"
+            value={codeState.input}
+          ></textarea>
+        )}
       </div>
       <div className="toolbar flex w-full justify-between bg-surface-secondary px-6 py-2">
         <div className="console-btn ">Console</div>
