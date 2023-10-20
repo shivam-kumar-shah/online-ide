@@ -10,6 +10,7 @@ export const codeApiSlice = apiSlice.injectEndpoints({
         body: {
           src: codeState.source,
           lang: codeState.lang.valueOf(),
+          stdin:codeState.input,
         },
       }),
     }),

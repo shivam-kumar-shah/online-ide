@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
-import { codeSelector, useAppSelector } from "../../../redux/store";
+import { codeSelector, useAppDispatch, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
 import {
   useRunMutation,
   useRunResultQuery,
 } from "../../../redux/reducers/Code/codeApiSlice";
 import Loading from "../../ui/loading/Loading";
+import { codeAction } from "../../../redux/reducers/Code/codeReducer";
 type Props = {};
 
 const Console = (props: Props) => {
@@ -14,9 +15,7 @@ const Console = (props: Props) => {
   const codeState = useAppSelector(codeSelector);
   const [runCode] = useRunMutation();
   const isLoading: boolean = codeState.loading;
-  // useMemo(()=>{
-  //   return codeState.loading;
-  // },[codeState])
+  const dispatch = useAppDispatch();
 
   useRunResultQuery(codeState, {
     pollingInterval: 1000,
@@ -88,6 +87,7 @@ const Console = (props: Props) => {
             title="input-area"
             className="h-full w-full bg-editor-surface p-2 text-font-primary focus:border-none"
             value={codeState.input}
+            onChange={(e)=>{dispatch(codeAction.setInput(e.target.value))}}
           ></textarea>
         )}
       </div>
