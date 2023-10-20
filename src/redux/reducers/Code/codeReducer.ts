@@ -5,6 +5,7 @@ import { AuthError } from "../Auth/types/auth";
 import { AxiosError } from "axios";
 import axiosPrivate from "../../../api/axiosPrivate";
 import { codeApiSlice } from "./codeApiSlice";
+import { truncateSync } from "fs";
 const initialState: CodeState = {
   lang: LangEnum.cpp,
   source: "",
@@ -69,7 +70,7 @@ export const codeSlice = createSlice({
     builder.addMatcher(
       codeApiSlice.endpoints.run.matchFulfilled,
       (state, { payload }) => {
-        state.loading = false;
+        state.loading = true;
         state.submissionId = payload.submissionId;
         state.fetchResult = true;
       },
@@ -79,6 +80,7 @@ export const codeSlice = createSlice({
       (state, { payload }) => {
         if (payload.status === "ok") {
           state.fetchResult = false;
+          state.loading=false;
           const { output, stderr } = payload.data!;
           state.error = stderr;
           state.output = output;

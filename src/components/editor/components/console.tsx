@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { codeSelector, useAppSelector } from "../../../redux/store";
 import Button from "../../ui/Button";
@@ -13,7 +13,10 @@ const Console = (props: Props) => {
   const [selectedTab, setSelectedTab] = useState<"tc" | "res">("tc");
   const codeState = useAppSelector(codeSelector);
   const [runCode] = useRunMutation();
-  const isLoading: boolean = false;
+  const isLoading: boolean = codeState.loading;
+  // useMemo(()=>{
+  //   return codeState.loading;
+  // },[codeState])
 
   useRunResultQuery(codeState, {
     pollingInterval: 1000,
